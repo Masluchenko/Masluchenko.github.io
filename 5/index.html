@@ -1,35 +1,39 @@
-window.addEventListener("DOMContentLoaded", function (event) {
-    console.log("DOM fully loaded and parsed");
-});
-
-function calculate() {
-    let firstProduct = Number(document.getElementById("firstProduct").value);
-    let firstLot = Number(document.getElementById("firstLot").value);
-    let secondProduct = Number(document.getElementById("secondProduct").value);
-    let secondLot = Number(document.getElementById("secondLot").value);
-
-
-    let re = new RegExp(/^[0-9]+$/i);
-    if (
-        !(
-            re.test(firstProduct) &&
-            re.test(firstLot) &&
-            re.test(secondProduct) &&
-            re.test(secondLot)
-        )
-    ) {
-          alert("Нужно писать число!");
-  } else if (firstProduct == "") {
-    alert("вы не указали цену 1 товару");
-  } else if (firstLot == "") {
-    alert("вы не указали кол-во 1 товара");
-  } else if (secondProduct == "") {
-    alert("вы не указали цену 2 товару");
-  } else if (secondLot == "") {
-    alert("вы не указали кол-во 2 товара");
-  } else {
-    const cost = firstProduct * firstLot + secondProduct * secondLot;
-    document.getElementById("cost").innerHTML =
-      "Стоимость равна: " + cost + " Руб.";
-    }
-}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>5 задание</title>
+</head>
+<body>
+    <h1 class="title">Калькулятор стоимости заказа</h1>
+    <p class="text">Первый товар</p>
+    <form>
+        <input type="text"
+               id="firstProduct"
+               value=""
+               placeholder="Цена первого товара" />
+        <p class="text">Кол-во первого товара</p>
+        <input type="text"
+               id="firstLot"
+               value=""
+               placeholder="Кол-во первого товара" />
+        <p class="text">Второй товар</p>
+        <input type="text"
+               id="secondProduct"
+               value=""
+               placeholder="Цена второго товара" />
+        <p class="text">Кол-во второго товара</p>
+        <input type="text"
+               id="secondLot"
+               value=""
+               placeholder="Кол-во второго товара" />
+    </form>
+    <br />
+    <button onclick="calculate();">Рассчитать стоимость товаров</button>
+    <br />
+    <div id="cost"></div>
+    <script src="main.js"></script>
+</body>
+</html>
